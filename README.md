@@ -5,10 +5,15 @@ This is the public repository for the The Community Hub for Open-source Room Aco
 1. Clone this repository to a location of your choice.
 2. In the command window / terminal, navigate (cd) to the repository.
 3. Run the following line of code to check out the correct versions of the (nested) submodules:
-```shell
+```
 git submodule update --init --recursive
 ```
 4. The repository should now have the latest (correct) state.
+5. Every time you make changes to submodules, remember to run 
+```
+git submodule update --recursive
+```
+to include the correct commits of all the submodules.
 
 ## Backend installation
 1. In the command window, run ```cd ra_ui_backend``` to navigate to the backend folder.
@@ -57,7 +62,7 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 2. Once installed, navigate to `ra_ui_frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:/GTK`.
-5. In the command window, run `npm install`.
+5. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
 5. Run the front-end app using `npm run dev`
 6. Go to http://localhost:5173/ and the user interface should be visible.
 
