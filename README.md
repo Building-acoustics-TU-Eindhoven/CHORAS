@@ -1,9 +1,9 @@
 # CHORAS
 This is the public repository for the The Community Hub for Open-source Room Acoustics Software. Follow the steps below to run CHORAS!
 
-## Initialising the repository
+## Initialising this repository
 1. Clone this repository to a location of your choice.
-2. In the command window / terminal, navigate (cd) to the repository.
+2. In the command window / terminal, navigate (`cd`) to the repository.
 3. Run the following line of code to check out the correct versions of the (nested) submodules:
 ```
 git submodule update --init --recursive
@@ -56,7 +56,7 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:/GTK`.
 5. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
-5. Run the front-end app using `npm run dev`
+5. Run the front-end app using `npm run dev`.
 6. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
 7. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
 
@@ -65,8 +65,8 @@ Celery is a package that allows for distributed task queueing. In the case of CH
 
 To run Celery:
 1. Open a new command window and navigate to the `ra_ui_backend` folder.
-2. Activate the environment by running `conda activate RA_Backend`
-3. Run Celery by running
+2. Activate the previously created environment by running `conda activate RA_Backend`.
+3. Run Celery by running:
 ```
 celery -A app.celery worker --loglevel=info -P eventlet
 ```
