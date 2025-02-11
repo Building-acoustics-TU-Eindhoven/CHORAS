@@ -1,0 +1,82 @@
+services:
+  frontend:
+    build: ./ra_ui_frontend
+    ports:
+      - "5432:5432"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001
+    volumes:
+      - ./ra_ui_frontend:/app
+      - /app/node_modules
+
+  backend:
+    build: ./ra_ui_backend
+    volumes:
+      - ./ra_ui_backend:/app
+    environment:
+      DATABASE: postgres
+      APP_ENV: local
+      BBDD_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password # Ensure this is set
+      POSTGRES_DB: app_db
+      FLASK_CONFIG: "config.ProductionConfig"
+      CELERY_APP: "app.celery"
+      API_HOST: "0.0.0.0"
+      API_PORT: 5001
+    env_file:
+      - ./ra_ui_backend/.env.pro
+    entrypoint: ["/app/entrypoint.sh"]
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    build: ./ra_ui_backend
+    volumes:
+      - ./ra_ui_backend:/app
+    environment:
+      DATABASE: postgres
+      APP_ENV: local
+      BBDD_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password # Ensure this is set
+      POSTGRES_DB: app_db
+      CELERY_APP: "app.celery"
+    env_file:
+      - ./ra_ui_backend/.env.pro
+    entrypoint: ["/app/entrypoint.sh"]
+    depends_on:
+      - backend
+      - redis
+
+  celery-beat:
+    build: ./ra_ui_backend
+    volumes:
+      - ./ra_ui_backend:/app
+    environment:
+      DATABASE: postgres
+      APP_ENV: local
+      BBDD_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password # Ensure this is set
+      POSTGRES_DB: app_db
+      CELERY_APP: "app.celery"
+    env_file:
+      - ./ra_ui_backend/.env.pro
+    entrypoint: ["/app/entrypoint.sh"]
+    depends_on:
+      - backend
+      - redis
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password  # Ensure this is set
+      POSTGRES_DB: app_db
+
+  redis:
+    image: redis:alpine
