@@ -1,8 +1,20 @@
 services:
+  db_service:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./ra_ui_backend/.env.db.local
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data/
+
+  redis:
+    image: redis:alpine
+
   frontend:
     build: ./ra_ui_frontend
     ports:
-      - "5432:5432"
+      - "5433:5433"
     depends_on:
       - backend
     environment:
@@ -19,28 +31,10 @@ services:
       - ./ra_ui_backend:/app
     env_file:
       - ./ra_ui_backend/.env.api.local
-    # environment:
-      # DATABASE: postgres
-      # APP_ENV: local
-      # BBDD_HOST: db
-      # POSTGRES_USER: db_user
-      # POSTGRES_PASSWORD: db_password # Ensure this is set
-      # POSTGRES_DB: db_dev
-      # CELERY_APP: "app.celery"
-      # API_HOST: "0.0.0.0"
-      # API_PORT: 5001
-      # API_ENTRYPOINT: "app:create_app"
-      # APP_SETTINGS_MODULE: "config.LocalConfig"
-      # SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://db_user:db_password@db_service:5432/db_dev"
     entrypoint: ["/app/entrypoint.sh"]
     depends_on:
       - db_service
       - redis
-  db_service:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: db_user
-      POSTGRES_PASSWORD: db_password
-      POSTGRES_DB: db_dev
-  redis:
-    image: redis:alpine
+
+volumes:
+  postgresql_data:
