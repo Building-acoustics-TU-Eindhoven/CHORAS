@@ -13,70 +13,34 @@ services:
 
   backend:
     build: ./ra_ui_backend
+    ports:
+      - "5001:5001"
     volumes:
       - ./ra_ui_backend:/app
-    environment:
-      DATABASE: postgres
-      APP_ENV: local
-      BBDD_HOST: db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password # Ensure this is set
-      POSTGRES_DB: app_db
-      FLASK_CONFIG: "config.ProductionConfig"
-      CELERY_APP: "app.celery"
-      API_HOST: "0.0.0.0"
-      API_PORT: 5001
     env_file:
-      - ./ra_ui_backend/.env.pro
+      - ./ra_ui_backend/.env.api.local
+    # environment:
+      # DATABASE: postgres
+      # APP_ENV: local
+      # BBDD_HOST: db
+      # POSTGRES_USER: db_user
+      # POSTGRES_PASSWORD: db_password # Ensure this is set
+      # POSTGRES_DB: db_dev
+      # CELERY_APP: "app.celery"
+      # API_HOST: "0.0.0.0"
+      # API_PORT: 5001
+      # API_ENTRYPOINT: "app:create_app"
+      # APP_SETTINGS_MODULE: "config.LocalConfig"
+      # SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://db_user:db_password@db_service:5432/db_dev"
     entrypoint: ["/app/entrypoint.sh"]
     depends_on:
-      - db
+      - db_service
       - redis
-
-  celery:
-    build: ./ra_ui_backend
-    volumes:
-      - ./ra_ui_backend:/app
-    environment:
-      DATABASE: postgres
-      APP_ENV: local
-      BBDD_HOST: db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password # Ensure this is set
-      POSTGRES_DB: app_db
-      CELERY_APP: "app.celery"
-    env_file:
-      - ./ra_ui_backend/.env.pro
-    entrypoint: ["/app/entrypoint.sh"]
-    depends_on:
-      - backend
-      - redis
-
-  celery-beat:
-    build: ./ra_ui_backend
-    volumes:
-      - ./ra_ui_backend:/app
-    environment:
-      DATABASE: postgres
-      APP_ENV: local
-      BBDD_HOST: db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password # Ensure this is set
-      POSTGRES_DB: app_db
-      CELERY_APP: "app.celery"
-    env_file:
-      - ./ra_ui_backend/.env.pro
-    entrypoint: ["/app/entrypoint.sh"]
-    depends_on:
-      - backend
-      - redis
-
-  db:
+  db_service:
     image: postgres:13
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password  # Ensure this is set
-      POSTGRES_DB: app_db
-
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
+      POSTGRES_DB: db_dev
   redis:
     image: redis:alpine
