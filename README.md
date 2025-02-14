@@ -15,7 +15,10 @@ git submodule update --recursive
 ```
 to include the correct commits of all the submodules.
 
-## Backend installation
+## Installation instructions
+If you have already performed the installation before, please refer to the instructions in the "Running your first simulation" section below.
+
+### Backend installation
 1. In the command window, run ```cd ra_ui_backend``` to navigate to the backend folder.
 2. Create a new environment and install all the requirements by running the following (this will take a minute)
 ```shell
@@ -40,7 +43,7 @@ Press CTRL+C to quit
 ```
 5. Note that in order to run the application correctly, this command window should remain open with the `flask run` process running.
 
-### Troubleshooting Mac
+#### Troubleshooting Mac
 It might happen that when you try to run flask you get an error saying something about rhino3dm. This means that your system architecture is not compatible with the default installation of the rhino3dm package. If this happens, run `uname -a` to find your system architecture. 
 
 ```
@@ -50,7 +53,7 @@ arch <arch> pip install rhino3dm
 ```
 where `<arch>` should be replaced by the architecture of your system (such as `-x86_64` or `-arm64`).
 
-## Frontend installation (open a new command window)
+### Frontend installation (open a new command window)
 1. Install node on your machine (https://nodejs.org/en).
 2. Once installed, navigate to `ra_ui_frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
@@ -60,7 +63,7 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 6. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
 7. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
 
-## Running Celery (open a new command window)
+### Running Celery (open a new command window)
 Celery is a package that allows for distributed task queueing. In the case of CHORAS, it allows to offload the simulation to a separate "worker" so that other processes (such as queueing other tasks) will not be blocked.
 
 To run Celery:
