@@ -13,7 +13,7 @@ services:
 
   frontend:
     build: ./ra_ui_frontend
-    image: silvinwillemsen/choras-frontend:latest
+    image: silvinwillemsen/choras-frontend:v1.0
     ports:
       - "5433:5433"
     depends_on:
@@ -26,7 +26,7 @@ services:
 
   backend:
     build: ./ra_ui_backend
-    image: silvinwillemsen/choras-backend:latest
+    image: silvinwillemsen/choras-backend:v1.0
     ports:
       - "5001:5001"
     volumes:
