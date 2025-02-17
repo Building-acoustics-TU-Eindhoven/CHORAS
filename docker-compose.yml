@@ -14,7 +14,7 @@ services:
   frontend:
     build: ./ra_ui_frontend
     ports:
-      - "5433:5433"
+      - "5173:5173"
     depends_on:
       - backend
     environment:
