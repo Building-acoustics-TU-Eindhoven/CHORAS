@@ -59,9 +59,10 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:/GTK`.
 5. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
-5. Run the front-end app using `npm run dev`.
-6. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
-7. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
+    - If you're getting errors you might want to run `set CL=/std:c++17` before `npm install`. This makes sure that the code is compiled using C++17.
+6. Run the front-end app using `npm run dev`.
+7. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
+8. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
 
 ### Running Celery (open a new command window)
 Celery is a package that allows for distributed task queueing. In the case of CHORAS, it allows to offload the simulation to a separate "worker" so that other processes (such as queueing other tasks) will not be blocked.
