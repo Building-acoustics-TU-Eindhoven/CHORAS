@@ -9,7 +9,7 @@ Please have the following installed on your machine:
 2. Conda: https://anaconda.org/anaconda/conda
 
 ## Initialising this repository
-1. Clone this repository to a location of your choice.
+1. Clone this repository to a location of your choice. If you have issues with cloning this repository (and its submodules), you can download the zipped repository via the releases page of this repository: https://github.com/Building-acoustics-TU-Eindhoven/CHORAS/releases 
 2. In the command window / terminal, navigate (`cd`) to the repository.
 3. Run the following line of code to check out the correct versions of the (nested) submodules:
 ```
