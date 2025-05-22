@@ -2,6 +2,7 @@
 This is the public repository for the The Community Hub for Open-source Room Acoustics Software. Follow the steps below to run CHORAS!
 
 ## Prerequisites
+Please have the following installed on your machine:
 1. The latest version of git: https://git-scm.com/downloads
 2. Conda: https://anaconda.org/anaconda/conda
 
