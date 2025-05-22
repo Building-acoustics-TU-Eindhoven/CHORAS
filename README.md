@@ -1,6 +1,8 @@
 # CHORAS
 This is the public repository for the The Community Hub for Open-source Room Acoustics Software. Follow the steps below to run CHORAS!
 
+Note that if you have issues with cloning this repository (and its submodules), you can download the zipped repository via the releases page of this repository: https://github.com/Building-acoustics-TU-Eindhoven/CHORAS/releases 
+
 ## Prerequisites
 Please have the following installed on your machine:
 1. The latest version of git: https://git-scm.com/downloads
