@@ -6,7 +6,7 @@ Note that if you have issues with cloning this repository (and its submodules), 
 ## Prerequisites
 Please have the following installed on your machine:
 1. The latest version of git: https://git-scm.com/downloads
-2. Conda: https://anaconda.org/anaconda/conda
+2. Conda: https://www.anaconda.com/download
 
 ## Initialising this repository
 1. Clone this repository to a location of your choice. If you have issues with cloning this repository (and its submodules), you can download the zipped repository via the releases page of this repository: https://github.com/Building-acoustics-TU-Eindhoven/CHORAS/releases 
@@ -61,7 +61,7 @@ arch <arch> pip install rhino3dm
 where `<arch>` should be replaced by the architecture of your system (such as `-x86_64` or `-arm64`).
 
 ### Frontend installation (open a new command window)
-1. Install node on your machine (https://nodejs.org/en).
+1. Install node *v20.19.2* on your machine (go to [https://nodejs.org/en](https://nodejs.org/en/download) and select v20.19.2 from the dropdown).
 2. Once installed, navigate to `ra_ui_frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:/GTK`.
