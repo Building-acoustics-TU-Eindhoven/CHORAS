@@ -64,7 +64,7 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 1. Install node *v20.19.2* on your machine (go to [https://nodejs.org/en](https://nodejs.org/en/download) and select v20.19.2 from the dropdown).
 2. Once installed, navigate to `ra_ui_frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
-4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:/GTK`.
+4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:\GTK`.
 5. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
     - If you're getting errors you might want to run `set CL=/std:c++17` before `npm install`. This makes sure that the code is compiled using C++17.
 6. Run the front-end app using `npm run dev`.
