@@ -33,7 +33,7 @@ conda create -n RA_Backend python=3.10
 
 conda activate RA_Backend
 
-pip install -r requirements.txt simulation-backend/. Diffusion/. edg-acoustics/.
+pip install -r requirements.txt
 ```
 3. Create the database by running `flask create-db` (you only have to do this once).
 

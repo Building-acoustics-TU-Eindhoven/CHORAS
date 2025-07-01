@@ -1,6 +1,6 @@
 [submodule "ra_ui_backend"]
 	path = ra_ui_backend
-	url = git@github.com:Building-acoustics-TU-Eindhoven/ra_ui_backend.git
+	url = https://github.com/Building-acoustics-TU-Eindhoven/ra_ui_backend.git
 [submodule "ra_ui_frontend"]
 	path = ra_ui_frontend
-	url = git@github.com:Building-acoustics-TU-Eindhoven/ra_ui_frontend.git
+	url = https://github.com/Building-acoustics-TU-Eindhoven/ra_ui_frontend.git
