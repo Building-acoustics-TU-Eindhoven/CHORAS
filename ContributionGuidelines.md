@@ -1,6 +1,6 @@
 # Contribution Guidelines: Adding a new simulation method
 
-If you have an open-source room acoustic simulation method you would like to add to the CHORAS back-end, you have come to the right place! If you simply want to use CHORAS as a front-end for your room acoustics simulation back-end, please read on. On the other hand, if you want your software to become part of CHORAS, please inform the lead developer (currently Silvin Willemsen: s.willemsen@tue.nl) of your intentions, so we can help you best :)
+If you have an open-source room acoustic simulation method you would like to add to the CHORAS back-end, you have come to the right place! If you simply want to use CHORAS as a front-end for your room acoustics simulation back-end, please read on. On the other hand, if you want your software to become part of the main CHORAS repository, please inform the lead developer (currently Silvin Willemsen: s.willemsen@tue.nl) of your intentions, so we can help you best :)
 
 
 ## Requirements for the room acoustics simulation back-end
