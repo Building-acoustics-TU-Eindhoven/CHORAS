@@ -86,15 +86,15 @@ Add entries to the following files:
 - const resultTypes: Array<ResulTypeOption>
 
 #### src/constants/index.ts
-- Below DE_TEXT: string
+- export `const <method> string` (right above `export const RESULT_PARAMETERS`)
 
 #### src/enums/index.ts
 - enum MethodEnum
 
 #### src/components/UI/SolverSettings/SolverSettings.tsx
 
-<RadioGroup>
-
+- `import ... from '@/constants'`
+- '<Tooltip ...>
 
 #### src/types/index.ts
 - type TaskType
