@@ -3,6 +3,9 @@ This is the public repository for the The Community Hub for Open-source Room Aco
 
 Note that if you have issues with cloning this repository (and its submodules), you can download the zipped repository via the releases page of this repository: https://github.com/Building-acoustics-TU-Eindhoven/CHORAS/releases 
 
+### For room acoustics simulation back-end developers
+If you are a developer of a room acoustics simulation back-end, please refer to the [Contribution Guidelines](ContributionGuidelines.md). 
+
 ## Prerequisites
 Please have the following installed on your machine:
 1. The latest version of git: https://git-scm.com/downloads
