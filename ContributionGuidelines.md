@@ -14,8 +14,8 @@ Before you follow the steps in this document, please read the requirements below
     - Material absorption properties
 
 ## Git business
-1. Fork this repository
-2. Follow the steps in the README.md for local installation.
+1. Clone this repository.
+2. Follow the steps in the README.md for local installation. (We prefer that you create a fork of the ra_ui_backend submodule so that you can work on this freely.)
 3. If CHORAS runs on your machine, congratulations! You are now ready to add your own software to the platform.  
 
 ## Glossary
