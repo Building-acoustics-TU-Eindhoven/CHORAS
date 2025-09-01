@@ -3,6 +3,9 @@ This is the public repository for the The Community Hub for Open-source Room Aco
 
 Note that if you have issues with cloning this repository (and its submodules), you can download the zipped repository via the releases page of this repository: https://github.com/Building-acoustics-TU-Eindhoven/CHORAS/releases 
 
+### For room acoustics simulation back-end developers
+If you are a developer of a room acoustics simulation back-end, please refer to the [Contribution Guidelines](ContributionGuidelines.md). 
+
 ## Prerequisites
 Please have the following installed on your machine:
 1. The latest version of git: https://git-scm.com/downloads
@@ -33,7 +36,7 @@ conda create -n RA_Backend python=3.10
 
 conda activate RA_Backend
 
-pip install -r requirements.txt simulation-backend/. Diffusion/. edg-acoustics/.
+pip install -r requirements.txt
 ```
 3. Create the database by running `flask create-db` (you only have to do this once).
 
@@ -65,11 +68,12 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 2. Once installed, navigate to `ra_ui_frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:\GTK`.
-5. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
+5. (Apple Silicon only) Run `brew install pkg-config cairo pango libpng jpeg giflib librsvg`
+6. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
     - If you're getting errors you might want to run `set CL=/std:c++17` before `npm install`. This makes sure that the code is compiled using C++17.
-6. Run the front-end app using `npm run dev`.
-7. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
-8. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
+7. Run the front-end app using `npm run dev`.
+8. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
+9. To interact with the user interface, make sure that the `flask run` process is (still) running in a separate command window.
 
 ### Running Celery (open a new command window)
 Celery is a package that allows for distributed task queueing. In the case of CHORAS, it allows to offload the simulation to a separate "worker" so that other processes (such as queueing other tasks) will not be blocked.
