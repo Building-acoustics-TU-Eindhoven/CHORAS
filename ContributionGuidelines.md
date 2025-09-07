@@ -28,7 +28,7 @@ To see where you have to add your new simulation method, find the keyword *MyNew
 !! Please do not remove the "MyNewMethod" content! This will make eventual merging of your changes into CHORAS easier and help future developers to (just like you) find where they have to add code :)
 
 ## Backend
-Fork your repository and add it as a submodule to the CHORAS repository (currently in the root of the ra_ui_backend submodule).
+Add your repository as a submodule to the CHORAS repository (currently in the root of the ra_ui_backend submodule). Make sure that the repository is public so that others will be able to clone/use it too.
 
 Add your method to the requirements.txt list using `-e` ("editable"), meaning changes to the code will immediately reflect without reinstalling. Then run
 
