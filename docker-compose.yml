@@ -1,5 +1,6 @@
 services:
   db_service:
+    platform: linux/amd64
     image: postgres:13
     ports:
       - "5432:5432"
@@ -9,9 +10,11 @@ services:
       - postgresql_data:/var/lib/postgresql/data/
 
   redis:
+    platform: linux/amd64
     image: redis:alpine
 
   frontend:
+    platform: linux/amd64
     build: ./frontend
     ports:
       - "5173:5173"
@@ -24,6 +27,7 @@ services:
       - /app/node_modules
 
   backend:
+    platform: linux/amd64
     build: ./backend
     ports:
       - "5001:5001"
