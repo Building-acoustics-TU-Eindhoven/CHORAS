@@ -29,12 +29,12 @@ to include the correct commits of all the submodules.
 If you have already performed the installation before, please refer to the instructions in the "Running your first simulation" section below.
 
 ### Backend installation
-1. In the command window, run ```cd ra_ui_backend``` to navigate to the backend folder.
+1. In the command window, run ```cd backend``` to navigate to the backend folder.
 2. Create a new environment and install all the requirements by running the following (this will take a minute)
 ```shell
-conda create -n RA_Backend python=3.10
+conda create -n choras python=3.10
 
-conda activate RA_Backend
+conda activate choras
 
 pip install -r requirements.txt
 ```
@@ -65,11 +65,11 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 
 ### Frontend installation (open a new command window)
 1. Install node *v20.19.2* on your machine (go to [https://nodejs.org/en](https://nodejs.org/en/download) and select v20.19.2 from the dropdown).
-2. Once installed, navigate to `ra_ui_frontend` in the command window.
+2. Once installed, navigate to `frontend` in the command window.
 3. (Windows only) Run `npm install -g node-gyp`
 4. (Windows only) Download and install GTK following step 2 via https://github.com/Automattic/node-canvas/wiki/Installation:-Windows. Be sure to unzip it in `C:\GTK`.
 5. (Apple Silicon only) Run `brew install pkg-config cairo pango libpng jpeg giflib librsvg`
-6. In the command window navigated to the `ra_ui_frontend` directory, run `npm install`.
+6. In the command window navigated to the `frontend` directory, run `npm install`.
     - If you're getting errors you might want to run `set CL=/std:c++17` before `npm install`. This makes sure that the code is compiled using C++17.
 7. Run the front-end app using `npm run dev`.
 8. Go to http://localhost:5173/ in your favourite browser and the user interface should be visible.
@@ -79,8 +79,8 @@ where `<arch>` should be replaced by the architecture of your system (such as `-
 Celery is a package that allows for distributed task queueing. In the case of CHORAS, it allows to offload the simulation to a separate "worker" so that other processes (such as queueing other tasks) will not be blocked.
 
 To run Celery:
-1. Open a new command window and navigate to the `ra_ui_backend` folder.
-2. Activate the previously created environment by running `conda activate RA_Backend`.
+1. Open a new command window and navigate to the `backend` folder.
+2. Activate the previously created environment by running `conda activate choras`.
 3. Run Celery by running:
 ```
 celery -A app.celery worker --loglevel=info -P eventlet
@@ -94,8 +94,8 @@ celery -A app.celery worker --loglevel=info -P eventlet
 - *** --- * ---
 - ** ---------- [config]
 - ** ---------- .> app:         ui_backend:0x2bc5d65f640
-- ** ---------- .> transport:   sqla+sqlite:///C:\Users\20225896\repositories\CHORAS\ra_ui_backend\celerydb.sqlite
-- ** ---------- .> results:     sqlite:///C:\Users\20225896\repositories\CHORAS\ra_ui_backend\celerydb.sqlite
+- ** ---------- .> transport:   sqla+sqlite:///C:\Users\20225896\repositories\CHORAS\backend\celerydb.sqlite
+- ** ---------- .> results:     sqlite:///C:\Users\20225896\repositories\CHORAS\backend\celerydb.sqlite
 - *** --- * --- .> concurrency: 12 (eventlet)
 -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
 --- ***** -----
@@ -106,7 +106,7 @@ celery -A app.celery worker --loglevel=info -P eventlet
 [tasks]
   . app.services.simulation_service.run_solver
 
-[2025-02-02 14:47:11,628: INFO/MainProcess] Connected to sqla+sqlite:///C:\Users\20225896\repositories\CHORAS\ra_ui_backend\celerydb.sqlite
+[2025-02-02 14:47:11,628: INFO/MainProcess] Connected to sqla+sqlite:///C:\Users\20225896\repositories\CHORAS\backend\celerydb.sqlite
 [2025-02-02 14:47:11,645: INFO/MainProcess] celery@TUE031950 ready.
 ```
 
@@ -115,17 +115,17 @@ Before running your first simulation, make sure to have three command windows ru
 
 | Process | Root folder | Conda environment | Command |
 |---|---|---|---|
-| Flask backend | ra_ui_backend | `RA_Backend` | `flask run` |
-| Celery | ra_ui_backend | `RA_Backend` | `celery -A app.celery worker --loglevel=info -P eventlet`
- | React frontend | ra_ui_frontend | doesn't matter | `npm run dev` | 
+| Flask backend | backend | `choras` | `flask run` |
+| Celery | backend | `choras` | `celery -A app.celery worker --loglevel=info -P eventlet`
+ | React frontend | frontend | doesn't matter | `npm run dev` | 
 
 Once these three processes are running in their respective windows follow these steps:
 1. Click on "Import geometry (model)".
-2. Import the example .obj file which can be found here: `CHORAS/ra_ui_backend/example_models/MeasurementRoom.obj`.
+2. Import the example .obj file which can be found here: `CHORAS/backend/example_models/MeasurementRoom.obj`.
 3. Enter a name for the model, assign it to a new group and a new project (choose names as you like).
 4. Click on the "Open model" button.
 5. Click on "Create a simulation" and give it a name.
-6. Upload the example .geo file which can be found here: `CHORAS/ra_ui_backend/example_models/MeasurementRoom.geo`, by clicking on the "Drop the file here to upload" button.
+6. Upload the example .geo file which can be found here: `CHORAS/backend/example_models/MeasurementRoom.geo`, by clicking on the "Drop the file here to upload" button.
     - Currently, the .geo file upload process stops the `flask run` process, so restart this by killing it using Ctrl+C in its command window, and rerunning `flask run` thereafter. 
     - Make sure to refresh the browser (http://localhost:5173) after doing this.
 7. Add a source and receiver by clicking on the respective "+" buttons.

@@ -15,7 +15,10 @@ Before you follow the steps in this document, please read the requirements below
 
 ## Git business
 1. Clone this repository.
-2. Follow the steps in the README.md for local installation. (We prefer that you create a fork of the ra_ui_backend submodule so that you can work on this freely.)
+2. Follow the steps in the README.md for local installation. 
+    - Please create a branch of the `backend` submodule (sim/<your_method_acronym>) so that you can work on this freely. Also, if you want to authenticate via ssh (instead of the default https), navigate to the `backend` submodule and run the following command to change the url:
+
+    `git remote set-url origin git@github.com:choras-org/backend.git`
 3. If CHORAS runs on your machine, congratulations! You are now ready to add your own software to the platform.  
 
 ## Glossary
@@ -28,7 +31,7 @@ To see where you have to add your new simulation method, find the keyword *MyNew
 !! Please do not remove the "MyNewMethod" content! This will make eventual merging of your changes into CHORAS easier and help future developers to (just like you) find where they have to add code :)
 
 ## Backend
-Add your repository as a submodule to the CHORAS repository (currently in the root of the ra_ui_backend submodule). Make sure that the repository is public so that others will be able to clone/use it too.
+Add your repository as a submodule to the CHORAS repository (currently in the root of the `backend` submodule). Make sure that the repository is public so that others will be able to clone/use it too.
 
 Add your method to the requirements.txt list using `-e` ("editable"), meaning changes to the code will immediately reflect without reinstalling. Then run
 
@@ -41,8 +44,8 @@ Then add your method to the following files:
 
 #### app/models/data/simulation_settings.json
 - Add a new entry to the simulation_settings.json list.
-In a terminal window, navigate to the backend using `cd <your/path/to/CHOARS>/ra_ui_backend/`
-- Activate the conda environment: `conda activate RA_Backend`
+In a terminal window, navigate to the `backend` using `cd <your/path/to/CHORAS>/backend/`
+- Activate the conda environment: `conda activate choras`
 - Run `flask reset-db` to add the new setting to the database (TODO: do this dynamically to not lose any data).
 
 #### example_settings/<new_file>.json
@@ -118,16 +121,16 @@ Open VS Code and make sure you have the Python Debugger extension installed:
 - In the *Extensions* tab of VS Code, find the the Python Debugger extension and install it.
 
 In a terminal window:
-- Navigate to the backend using `cd <your/path/to/CHOARS>/ra_ui_backend/`
+- Navigate to the `backend` using `cd <your/path/to/CHORAS>/backend/`
 - Run `code .` to open the current folder in VScode
-- Click on the *Run and debug* tab and select *Python Debugger: Flask* from the dropdown next to the green arrow. (the settings for this are defined in <your/path/to/CHORAS>ra_ui_backend/.vscode/launch.json)
+- Click on the *Run and debug* tab and select *Python Debugger: Flask* from the dropdown next to the green arrow. (the settings for this are defined in <your/path/to/CHORAS>/backend/.vscode/launch.json)
 - Click on the green arrow to run the Flask application in debug mode. 
 - You'll now be able to put breakpoints in the application.
 
 Note that every time you change something in the code, you'll need to click on the *Restart* icon (green arrow going around itself) in the VS Code debug panel. Possibly terminate the Celery and flask run processes using ctrl+c and run them again. 
 
 ### How to debug functions ran by Celery
-The function running the simulation methods (the `run_solver` function in ra_backend_ui/app/services/simulation_service.py) is offloaded from the main backend and ran by Celery.
+The function running the simulation methods (the `run_solver` function in backend/app/services/simulation_service.py) is offloaded from the main backend and ran by Celery.
 
 In order to debug anything that happens in run_solver, at the top of the simulation_service.py file, you'll need to set `debug_celery = True`. Note that anything asynchronous (such as the percentage update) doesn't show in the front-end while the simulation is running if this flag is indeed set to `True`.
 

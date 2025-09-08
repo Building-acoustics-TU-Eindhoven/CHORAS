@@ -4,7 +4,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - ./ra_ui_backend/.env.db.local
+      - ./backend/.env.db.local
     volumes:
       - postgresql_data:/var/lib/postgresql/data/
 
@@ -12,7 +12,7 @@ services:
     image: redis:alpine
 
   frontend:
-    build: ./ra_ui_frontend
+    build: ./frontend
     ports:
       - "5173:5173"
     depends_on:
@@ -20,17 +20,17 @@ services:
     environment:
       - REACT_APP_API_URL=http://localhost:5001
     volumes:
-      - ./ra_ui_frontend:/app
+      - ./frontend:/app
       - /app/node_modules
 
   backend:
-    build: ./ra_ui_backend
+    build: ./backend
     ports:
       - "5001:5001"
     volumes:
-      - ./ra_ui_backend:/app
+      - ./backend:/app
     env_file:
-      - ./ra_ui_backend/.env.api.local
+      - ./backend/.env.api.local
     entrypoint: ["/app/entrypoint.sh"]
     depends_on:
       - db_service
