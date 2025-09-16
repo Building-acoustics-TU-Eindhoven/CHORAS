@@ -36,13 +36,7 @@ To see where you have to add your new simulation method, find the keyword *MyNew
 
 Add your repository as a submodule to the CHORAS repository (currently in the root of the `backend` submodule). Make sure that the repository is public so that others will be able to clone/use it too.
 
-Add your method to the requirements.txt list using `-e` ("editable"), meaning changes to the code will immediately reflect without reinstalling. Then run
-
-``` shell
-pip install -r requirements.txt
-```
-
-to install.
+Add your method to the requirements.txt list using `-e` ("editable"), meaning changes to the code will immediately reflect without reinstalling. 
 
 Then add your method to the following files:
 
@@ -86,6 +80,15 @@ from simulation_backend.<your_new_interface> import <your_new_interface_method>
 case TaskType.<your_new_tasktype>:
     <your_new_interface_method>(json_file_path=json_path)
 ```
+
+### Install
+Finally, in the `choras` environment, run
+
+``` shell
+pip install -r requirements.txt
+```
+
+to install.
 
 ## Frontend
 
